@@ -14,22 +14,23 @@ namespace Codebase.Hero.Factory
       _heroConfig = heroConfig;
     }
     
-    public GameObject Create()
+    public Entity Create()
     {
       var heroObject = Object.Instantiate(_heroConfig.Prefab);
       var provider = heroObject.GetComponent<HeroComponentProvider>();
       var attackRange = heroObject.GetComponent<AttackRange>();
       var heroEntity = provider.Entity;
-      var attackModel = new AttackModel(_heroConfig.DamagePerSecond, _heroConfig.AttackRadius, _heroConfig.AttackDelay);
+      var attackModel = new AttackModel(_heroConfig.Damage, _heroConfig.AttackRadius, _heroConfig.AttackDelay);
       var heroModel = new HeroModel(_heroConfig.Speed, attackModel, _heroConfig);
       
       heroEntity.AddComponent<MovementVelocity>();
       ref var hero = ref heroEntity.GetComponent<HeroComponent>();
       
       hero.Model = heroModel;
+
       attackRange.Attacker = heroEntity;
-    
-      return heroObject;
+
+      return heroEntity;
     }
   }
 }

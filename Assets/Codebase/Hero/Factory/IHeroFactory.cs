@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+﻿using Scellecs.Morpeh;
+using UnityEngine;
 
 namespace Codebase.Hero.Factory
 {
   public interface IHeroFactory
   {
-    GameObject Create();
+    Entity Create();
   }
 }

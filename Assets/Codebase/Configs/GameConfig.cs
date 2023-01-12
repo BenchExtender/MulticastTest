@@ -1,3 +1,4 @@
+using Codebase.UI;
 using UnityEngine;
 
 namespace Codebase.Configs
@@ -8,5 +9,6 @@ namespace Codebase.Configs
     [field: SerializeField] public int MaxEnemiesCount { get; private set; }
     [field: SerializeField] public float MaxSpawnDistance { get; private set; }
     [field: SerializeField] public float MinSpawnDistance { get; private set; }
+    [field: SerializeField] public HUD HudPrefab { get; set; }
   }
 }

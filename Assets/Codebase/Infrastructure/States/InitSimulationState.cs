@@ -1,4 +1,5 @@
 using Codebase.Attack;
+using Codebase.Configs;
 using Codebase.Enemy;
 using Codebase.Hero;
 using Codebase.Hero.Factory;
@@ -18,17 +19,19 @@ namespace Codebase.Infrastructure.States
         private readonly ISystemFactory _systemFactory;
         private readonly IHeroFactory _heroFactory;
         private readonly GameStateMachine _gameStateMachine;
+        private readonly GameConfig _gameConfig;
         private SystemsGroup _systemGroup;
         private World _world;
 
         public InitSimulationState(IWorldProvider worldProvider, IWorldUpdater worldUpdater, ISystemFactory systemFactory, 
-            IHeroFactory heroFactory, GameStateMachine gameStateMachine)
+            IHeroFactory heroFactory, GameStateMachine gameStateMachine, GameConfig gameConfig)
         {
             _worldProvider = worldProvider;
             _worldUpdater = worldUpdater;
             _systemFactory = systemFactory;
             _heroFactory = heroFactory;
             _gameStateMachine = gameStateMachine;
+            _gameConfig = gameConfig;
         }
     
         public void Enter()
@@ -38,7 +41,10 @@ namespace Codebase.Infrastructure.States
       
             _systemGroup.Initialize();
 
-            _heroFactory.Create();
+            var heroEntity = _heroFactory.Create();
+
+            CreateHud(heroEntity);
+
             _gameStateMachine.Enter<GameLoopState>();
         }
 
@@ -59,6 +65,13 @@ namespace Codebase.Infrastructure.States
             _world = World.Default;
             _worldProvider.World = _world;
             _worldUpdater.Setup(_world);
+        }
+
+        private void CreateHud(Entity heroEntity)
+        {
+            var heroModel = heroEntity.GetComponent<HeroComponent>().Model;
+            var hud = Object.Instantiate(_gameConfig.HudPrefab);
+            hud.Init(heroModel);
         }
 
         public void Exit()
