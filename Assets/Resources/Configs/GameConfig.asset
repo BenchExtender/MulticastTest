@@ -9,8 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 637bc75cb1858d14a8f99e6d0fb17f65, type: 3}
-  m_Name: Enemy1
+  m_Script: {fileID: 11500000, guid: 6c176a4522255274295b58023e5e12ef, type: 3}
+  m_Name: GameConfig
   m_EditorClassIdentifier: 
-  <Prefab>k__BackingField: {fileID: 1462565658633212696, guid: b6ba7fe2a367f4d45acf6c7b45725cdc, type: 3}
-  <MaxHealth>k__BackingField: 100
+  <MaxEnemiesCount>k__BackingField: 10
+  <MaxSpawnDistance>k__BackingField: 3
+  <MinSpawnDistance>k__BackingField: 1

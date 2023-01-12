@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b34425046567216438f5d1a00a2032e1, type: 3}
   m_Name: EnemiesCollection
   m_EditorClassIdentifier: 
-  <Enemies>k__BackingField: []
+  <Enemies>k__BackingField:
+  - {fileID: 11400000, guid: cc34c4dce2fc7b742adccc6622f85ff6, type: 2}
+  - {fileID: 11400000, guid: 3235deb9613dd964dbface5277a4463c, type: 2}
+  - {fileID: 11400000, guid: b6ac105de57c0274db83c38d8bbe9572, type: 2}

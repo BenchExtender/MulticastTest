@@ -1,3 +1,4 @@
+using Codebase.Enemy.Factory;
 using Codebase.Hero.Factory;
 using Codebase.Infrastructure.States;
 using Codebase.Services.InputService;
@@ -39,6 +40,7 @@ namespace Codebase.Installers
         {
             Container.BindInterfacesAndSelfTo<HeroFactory>().AsSingle();
             Container.BindInterfacesAndSelfTo<SystemFactory>().AsSingle();
+            Container.BindInterfacesAndSelfTo<EnemyFactory>().AsSingle();
         }
 
         public void Initialize()

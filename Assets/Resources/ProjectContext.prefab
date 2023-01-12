@@ -81,6 +81,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <HeroConfig>k__BackingField: {fileID: 11400000, guid: b32e54fb032da074fa04b33144f85b84, type: 2}
+  <EnemiesCollection>k__BackingField: {fileID: 11400000, guid: 2a27ac60b73263e438debb4ddb4447fe, type: 2}
+  <GameConfig>k__BackingField: {fileID: 11400000, guid: 3968a00bdcb69614492500d6fe27d93e, type: 2}
 --- !u!114 &1598504055696058723
 MonoBehaviour:
   m_ObjectHideFlags: 0

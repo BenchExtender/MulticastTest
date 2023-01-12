@@ -1,3 +1,4 @@
+using Codebase.Enemy;
 using Codebase.Hero;
 using Codebase.Movement;
 using Zenject;
@@ -10,6 +11,7 @@ namespace Codebase.Installers
     {
       Container.Bind<MovementSystem>().AsSingle();
       Container.Bind<HeroMovementSystem>().AsSingle();
+      Container.Bind<EnemySpawnSystem>().AsSingle();
     }
   }
 }
