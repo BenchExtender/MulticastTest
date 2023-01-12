@@ -70,7 +70,7 @@ namespace Codebase.Infrastructure.States
         private void CreateHud(Entity heroEntity)
         {
             var heroModel = heroEntity.GetComponent<HeroComponent>().Model;
-            var hud = Object.Instantiate(_gameConfig.HudPrefab);
+            var hud = GameObject.Instantiate(_gameConfig.HudPrefab);
             hud.Init(heroModel);
         }
 

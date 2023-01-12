@@ -20,8 +20,8 @@ namespace Codebase.Configs
     [field: SerializeField] public int DamageUpgradeStep { get; set; } = 10;
     [field: SerializeField] public float AttackRangeStep { get; set; } = 1f;
     
-    [field: SerializeField] public float SpeedUpgradeChance { get; set; } = 60;
-    [field: SerializeField] public float DamageUpgradeChance { get; set; } = 30;
-    [field: SerializeField] public float AttackRangeChance { get; set; } = 10;
+    [field: SerializeField] public int SpeedUpgradeChance { get; set; } = 60;
+    [field: SerializeField] public int DamageUpgradeChance { get; set; } = 30;
+    [field: SerializeField] public int AttackRangeChance { get; set; } = 10;
   }
 }
