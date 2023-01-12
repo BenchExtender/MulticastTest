@@ -1,3 +1,4 @@
+using System;
 using Scellecs.Morpeh;
 using Sirenix.OdinInspector;
 using Unity.IL2CPP.CompilerServices;
@@ -15,6 +16,12 @@ namespace Codebase.Enemy
     public void Reset()
     {
       Current = Max;
+    }
+
+    public void DealDamage(int targetDamage)
+    {
+      Current -= targetDamage;
+      Current = Math.Clamp(Current, 0, Max);
     }
   }
 }

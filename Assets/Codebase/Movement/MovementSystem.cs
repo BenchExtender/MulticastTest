@@ -7,11 +7,11 @@ namespace Codebase.Movement
   [Il2CppSetOption(Option.NullChecks, false)]
   [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
   [Il2CppSetOption(Option.DivideByZeroChecks, false)]
-  public class MovementSystem : ScriptableObject, ISystem 
+  public class MovementSystem : ISystem 
   {
     public World World { get; set; }
+    
     private Filter _filter;
-
     public void OnAwake()
     {
       _filter = World.Filter.With<MovementVelocity>().With<Transformable>();
@@ -23,7 +23,7 @@ namespace Codebase.Movement
       {
         ref var velocity = ref entity.GetComponent<MovementVelocity>();
         ref var view = ref entity.GetComponent<Transformable>();
-        view.Transform.position += velocity.Velocity;
+        view.Transform.position += velocity.Velocity * deltaTime;
       }
     }
 

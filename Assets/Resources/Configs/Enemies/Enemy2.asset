@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Enemy2
   m_EditorClassIdentifier: 
   <Prefab>k__BackingField: {fileID: 6806436396951347012, guid: 1f937b3961faea544b462143ee1bb5d4, type: 3}
-  <MaxHealth>k__BackingField: 200
+  <MaxHealth>k__BackingField: 100

@@ -1,3 +1,4 @@
+using Codebase.Attack;
 using Codebase.Enemy;
 using Codebase.Hero;
 using Codebase.Movement;
@@ -12,6 +13,9 @@ namespace Codebase.Installers
       Container.Bind<MovementSystem>().AsSingle();
       Container.Bind<HeroMovementSystem>().AsSingle();
       Container.Bind<EnemySpawnSystem>().AsSingle();
+      Container.Bind<EnemyDisposeSystem>().AsSingle();
+      Container.Bind<AttackTargetSystem>().AsSingle();
+      Container.Bind<DamageSystem>().AsSingle();
     }
   }
 }

@@ -1,3 +1,4 @@
+using Codebase.Attack;
 using Codebase.Enemy;
 using Codebase.Hero;
 using Codebase.Hero.Factory;
@@ -47,6 +48,9 @@ namespace Codebase.Infrastructure.States
             _systemGroup.AddSystem(_systemFactory.Create<HeroMovementSystem>());
             _systemGroup.AddSystem(_systemFactory.Create<MovementSystem>());
             _systemGroup.AddSystem(_systemFactory.Create<EnemySpawnSystem>());
+            _systemGroup.AddSystem(_systemFactory.Create<EnemyDisposeSystem>());
+            _systemGroup.AddSystem(_systemFactory.Create<AttackTargetSystem>());
+            _systemGroup.AddSystem(_systemFactory.Create<DamageSystem>());
             _world.AddSystemsGroup(0, _systemGroup);
         }
 

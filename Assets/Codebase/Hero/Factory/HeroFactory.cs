@@ -18,13 +18,17 @@ namespace Codebase.Hero.Factory
     {
       var heroObject = Object.Instantiate(_heroConfig.Prefab);
       var provider = heroObject.GetComponent<HeroComponentProvider>();
+      var attackRange = heroObject.GetComponent<AttackRange>();
       var heroEntity = provider.Entity;
-      var heroModel = new HeroModel(_heroConfig.Speed, _heroConfig.DamagePerSecond, _heroConfig.AttackRadius,
-        _heroConfig);
+      var attackModel = new AttackModel(_heroConfig.DamagePerSecond, _heroConfig.AttackRadius, _heroConfig.AttackDelay);
+      var heroModel = new HeroModel(_heroConfig.Speed, attackModel, _heroConfig);
       
       heroEntity.AddComponent<MovementVelocity>();
       ref var hero = ref heroEntity.GetComponent<HeroComponent>();
-
+      
+      hero.Model = heroModel;
+      attackRange.Attacker = heroEntity;
+    
       return heroObject;
     }
   }

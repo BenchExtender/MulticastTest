@@ -36,7 +36,8 @@ namespace Codebase.Hero
             foreach (var entity in _filter)
             {
                 ref var velocity = ref entity.GetComponent<MovementVelocity>();
-                velocity.Velocity = direction.normalized * _heroConfig.Speed * _heroConfig.SpeedMultiplier * deltaTime;
+                var hero = entity.GetComponent<HeroComponent>();
+                velocity.Velocity = direction.normalized * hero.Model.Speed.Value * _heroConfig.SpeedMultiplier;
             }
         }
 

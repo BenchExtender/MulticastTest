@@ -16,3 +16,6 @@ MonoBehaviour:
   <Speed>k__BackingField: 1
   <SpeedMultiplier>k__BackingField: 10
   <AttackRadius>k__BackingField: 1
+  <DamagePerSecond>k__BackingField: 100
+  <AttackTargetsCount>k__BackingField: 3
+  <AttackDelay>k__BackingField: 1
