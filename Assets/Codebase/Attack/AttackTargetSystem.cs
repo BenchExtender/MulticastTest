@@ -42,7 +42,7 @@ namespace Codebase.Attack
       if (hero.Model.Attack.LastAttackTime + hero.Model.Attack.AttackDelay < Time.time )
       {
         var heroPosition = attacker.GetComponent<Transformable>().Transform.position;
-        var targets = SelectAttackTargets(heroPosition, hero.Model.Attack.Range.Value, enemyEntities);
+        var targets = SelectAttackTargets(heroPosition, enemyEntities);
 
         for (int i = 0; i < hero.Model.Config.AttackTargetsCount && i < targets.Count; i++)
         {
@@ -55,12 +55,11 @@ namespace Codebase.Attack
       }
     }
 
-    private List<Entity> SelectAttackTargets(Vector3 heroPosition, float attackRange, List<Entity> enemyEntities)
+    private List<Entity> SelectAttackTargets(Vector3 heroPosition, List<Entity> enemyEntities)
     {
       var enemies = enemyEntities.ToDictionary(e => e, e =>
           Vector3.Distance(e.GetComponent<Transformable>().Transform.position, heroPosition))
-        .Where(e => e.Value < attackRange)
-        .OrderByDescending(e => e.Value)
+        .OrderBy(e => e.Value)
         .Select(e => e.Key);
       
       return enemies.ToList();

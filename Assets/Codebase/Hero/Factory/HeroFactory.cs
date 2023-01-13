@@ -1,4 +1,5 @@
-﻿using Codebase.Configs;
+﻿using Codebase.Attack;
+using Codebase.Configs;
 using Codebase.Movement;
 using Scellecs.Morpeh;
 using UnityEngine;
@@ -28,7 +29,7 @@ namespace Codebase.Hero.Factory
       
       hero.Model = heroModel;
 
-      attackRange.Attacker = heroEntity;
+      attackRange.Init(heroEntity, heroModel);
 
       return heroEntity;
     }

@@ -1,6 +1,7 @@
 using System.Linq;
 using Codebase.Configs;
 using Codebase.Enemy.Factory;
+using Codebase.Movement;
 using Scellecs.Morpeh;
 using Unity.IL2CPP.CompilerServices;
 using UnityEngine;
@@ -42,8 +43,8 @@ namespace Codebase.Enemy
     private void SpawnEnemy()
     {
       EnemyConfig enemyConfig = SelectEnemyToSpawn();
-      var enemy = _enemyFactory.Create(enemyConfig);
-      enemy.transform.position = GetRandomPosition();
+      var enemyEntity = _enemyFactory.Create(enemyConfig);
+      enemyEntity.GetComponent<Transformable>().Transform.position = GetRandomPosition();
     }
 
     private Vector3 GetRandomPosition()

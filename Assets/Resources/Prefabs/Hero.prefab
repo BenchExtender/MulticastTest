@@ -75,12 +75,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 162eda2e3b2bdd943b4c8c30aa22f630, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Attacker:
-    worldID: 0
-    isDirty: 0
-    isDisposed: 0
-    previousArchetypeId: 0
-    currentArchetypeId: 0
+  <Collider>k__BackingField: {fileID: 1255976828121757657}
 --- !u!135 &1255976828121757657
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -93,7 +88,7 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 3
-  m_Center: {x: 0, y: 0.94, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &-3059986857480795856
 Rigidbody:
   m_ObjectHideFlags: 0
