@@ -1,9 +1,11 @@
 using Codebase.Enemy.Factory;
 using Codebase.Hero.Factory;
 using Codebase.Infrastructure.States;
+using Codebase.Services.CoroutineRunner;
 using Codebase.Services.HeroUpgradeService;
 using Codebase.Services.InputService;
 using Codebase.Services.RandomService;
+using Codebase.Services.SceneLoader;
 using Codebase.Services.SystemFactory;
 using Codebase.Services.WorldUpdater;
 using Codebase.UI;
@@ -12,7 +14,7 @@ using Zenject;
 
 namespace Codebase.Installers
 {
-    public class BootstrapInstaller : MonoInstaller, IInitializable
+    public class BootstrapInstaller : MonoInstaller, IInitializable, ICoroutineRunner
     {
         private GameStateMachine _gameStateMachine;
         private IStateFactory _stateFactory;
@@ -33,6 +35,7 @@ namespace Codebase.Installers
 
         private void BindServices()
         {
+            Container.BindInterfacesAndSelfTo<SceneLoader>().AsSingle();
             Container.BindInterfacesAndSelfTo<InputService>().AsSingle();
             Container.BindInterfacesAndSelfTo<WorldUpdater>().AsSingle();
             Container.BindInterfacesAndSelfTo<HeroUpgradeService>().AsSingle();
