@@ -1,10 +1,13 @@
 using Codebase.Enemy.Factory;
 using Codebase.Hero.Factory;
 using Codebase.Infrastructure.States;
+using Codebase.Services.HeroUpgradeService;
 using Codebase.Services.InputService;
+using Codebase.Services.RandomService;
 using Codebase.Services.SystemFactory;
 using Codebase.Services.WorldProvider;
 using Codebase.Services.WorldUpdater;
+using Codebase.UI;
 using UnityEngine;
 using Zenject;
 
@@ -34,6 +37,8 @@ namespace Codebase.Installers
             Container.BindInterfacesAndSelfTo<InputService>().AsSingle();
             Container.BindInterfacesAndSelfTo<WorldProvider>().AsSingle();
             Container.BindInterfacesAndSelfTo<WorldUpdater>().AsSingle();
+            Container.BindInterfacesAndSelfTo<HeroUpgradeService>().AsSingle();
+            Container.BindInterfacesAndSelfTo<RandomService>().AsSingle();
         }
 
         private void BindFactories()
@@ -41,6 +46,7 @@ namespace Codebase.Installers
             Container.BindInterfacesAndSelfTo<HeroFactory>().AsSingle();
             Container.BindInterfacesAndSelfTo<SystemFactory>().AsSingle();
             Container.BindInterfacesAndSelfTo<EnemyFactory>().AsSingle();
+            Container.BindInterfacesAndSelfTo<HudFactory>().AsSingle();
         }
 
         public void Initialize()

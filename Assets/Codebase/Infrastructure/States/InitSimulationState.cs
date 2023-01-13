@@ -7,6 +7,7 @@ using Codebase.Movement;
 using Codebase.Services.SystemFactory;
 using Codebase.Services.WorldProvider;
 using Codebase.Services.WorldUpdater;
+using Codebase.UI;
 using Scellecs.Morpeh;
 using UnityEngine;
 
@@ -19,19 +20,20 @@ namespace Codebase.Infrastructure.States
         private readonly ISystemFactory _systemFactory;
         private readonly IHeroFactory _heroFactory;
         private readonly GameStateMachine _gameStateMachine;
+        private readonly IHudFactory _hudFactory;
         private readonly GameConfig _gameConfig;
         private SystemsGroup _systemGroup;
         private World _world;
 
         public InitSimulationState(IWorldProvider worldProvider, IWorldUpdater worldUpdater, ISystemFactory systemFactory, 
-            IHeroFactory heroFactory, GameStateMachine gameStateMachine, GameConfig gameConfig)
+            IHeroFactory heroFactory, GameStateMachine gameStateMachine, IHudFactory hudFactory)
         {
             _worldProvider = worldProvider;
             _worldUpdater = worldUpdater;
             _systemFactory = systemFactory;
             _heroFactory = heroFactory;
             _gameStateMachine = gameStateMachine;
-            _gameConfig = gameConfig;
+            _hudFactory = hudFactory;
         }
     
         public void Enter()
@@ -70,7 +72,7 @@ namespace Codebase.Infrastructure.States
         private void CreateHud(Entity heroEntity)
         {
             var heroModel = heroEntity.GetComponent<HeroComponent>().Model;
-            var hud = Object.Instantiate(_gameConfig.HudPrefab);
+            var hud = _hudFactory.Create();
             hud.Init(heroModel);
         }
 

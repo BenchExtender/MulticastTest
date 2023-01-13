@@ -32,7 +32,6 @@ namespace Codebase.Attack
 
         health.DealDamage(target.Damage);
         CheckDeath(health, entity, target);
-        Debug.Log(health.Current);
         entity.RemoveComponent<AttackTarget>();
       }
     }
