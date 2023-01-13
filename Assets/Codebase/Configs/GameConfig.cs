@@ -9,6 +9,6 @@ namespace Codebase.Configs
     [field: SerializeField] public int MaxEnemiesCount { get; private set; }
     [field: SerializeField] public float MaxSpawnDistance { get; private set; }
     [field: SerializeField] public float MinSpawnDistance { get; private set; }
-    [field: SerializeField] public HudScreen HudPrefab { get; set; }
+    [field: SerializeField] public HudScreen HudPrefab { get; private set; }
   }
 }

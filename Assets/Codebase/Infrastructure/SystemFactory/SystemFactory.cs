@@ -1,7 +1,7 @@
 ﻿using Scellecs.Morpeh;
 using Zenject;
 
-namespace Codebase.Services.SystemFactory
+namespace Codebase.Infrastructure.SystemFactory
 {
   public class SystemFactory : ISystemFactory
   {

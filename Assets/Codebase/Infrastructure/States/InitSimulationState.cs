@@ -4,8 +4,8 @@ using Codebase.Configs;
 using Codebase.Enemy;
 using Codebase.Hero;
 using Codebase.Hero.Factory;
+using Codebase.Infrastructure.SystemFactory;
 using Codebase.Movement;
-using Codebase.Services.SystemFactory;
 using Codebase.Services.WorldUpdater;
 using Codebase.UI;
 using Scellecs.Morpeh;
@@ -23,6 +23,7 @@ namespace Codebase.Infrastructure.States
         private readonly GameConfig _gameConfig;
         private SystemsGroup _systemGroup;
         private World _world;
+        private HudScreen _hud;
 
         public InitSimulationState(IWorldUpdater worldUpdater, ISystemFactory systemFactory, 
             IHeroFactory heroFactory, GameStateMachine gameStateMachine, IHudFactory hudFactory)
@@ -76,8 +77,7 @@ namespace Codebase.Infrastructure.States
         private void CreateHud(Entity heroEntity)
         {
             var heroModel = heroEntity.GetComponent<HeroComponent>().Model;
-            var hud = _hudFactory.Create();
-            hud.Init(heroModel);
+            _hud = _hudFactory.Create(heroModel);
         }
 
         public void Exit() { }

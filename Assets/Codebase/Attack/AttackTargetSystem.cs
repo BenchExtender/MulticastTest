@@ -65,9 +65,6 @@ namespace Codebase.Attack
       return enemies.ToList();
     }
 
-    public void Dispose()
-    {
-    
-    }
+    public void Dispose() { }
   }
 }

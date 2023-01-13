@@ -1,4 +1,5 @@
 ﻿using Codebase.Configs;
+using Codebase.Hero;
 using Zenject;
 
 namespace Codebase.UI
@@ -14,9 +15,11 @@ namespace Codebase.UI
       _diContainer = diContainer;
     }
 
-    public HudScreen Create()
+    public HudScreen Create(HeroModel heroModel)
     {
-      return _diContainer.InstantiatePrefabForComponent<HudScreen>(_gameConfig.HudPrefab);
+      var hud =  _diContainer.InstantiatePrefabForComponent<HudScreen>(_gameConfig.HudPrefab);
+      hud.Init(heroModel);
+      return hud;
     }
   }
 }

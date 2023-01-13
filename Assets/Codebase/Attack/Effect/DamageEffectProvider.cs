@@ -1,8 +1,7 @@
-using Codebase.Attack.Effect;
 using Scellecs.Morpeh.Providers;
 using Unity.IL2CPP.CompilerServices;
 
-namespace Codebase.Attack.DamageEffect
+namespace Codebase.Attack.Effect
 {
   [Il2CppSetOption(Option.NullChecks, false)]
   [Il2CppSetOption(Option.ArrayBoundsChecks, false)]

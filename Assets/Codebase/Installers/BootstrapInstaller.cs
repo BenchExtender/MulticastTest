@@ -1,12 +1,12 @@
 using Codebase.Enemy.Factory;
 using Codebase.Hero.Factory;
 using Codebase.Infrastructure.States;
+using Codebase.Infrastructure.SystemFactory;
 using Codebase.Services.CoroutineRunner;
 using Codebase.Services.HeroUpgradeService;
 using Codebase.Services.InputService;
 using Codebase.Services.RandomService;
 using Codebase.Services.SceneLoader;
-using Codebase.Services.SystemFactory;
 using Codebase.Services.WorldUpdater;
 using Codebase.UI;
 using UnityEngine;

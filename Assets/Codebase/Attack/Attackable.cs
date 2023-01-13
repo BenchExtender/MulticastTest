@@ -1,7 +1,7 @@
 using Scellecs.Morpeh;
 using Unity.IL2CPP.CompilerServices;
 
-namespace Codebase.Enemy
+namespace Codebase.Attack
 {
   [System.Serializable]
   [Il2CppSetOption(Option.NullChecks, false)]

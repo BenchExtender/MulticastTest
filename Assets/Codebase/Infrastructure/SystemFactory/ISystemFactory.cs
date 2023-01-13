@@ -1,6 +1,6 @@
 using Scellecs.Morpeh;
 
-namespace Codebase.Services.SystemFactory
+namespace Codebase.Infrastructure.SystemFactory
 {
   public interface ISystemFactory
   {

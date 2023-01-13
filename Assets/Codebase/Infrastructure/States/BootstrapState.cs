@@ -1,6 +1,5 @@
 using Codebase.Hero.Factory;
 using Codebase.Services.SceneLoader;
-using Codebase.Services.SystemFactory;
 using Codebase.Services.WorldUpdater;
 using Scellecs.Morpeh;
 
@@ -8,7 +7,7 @@ namespace Codebase.Infrastructure.States
 {
   public class BootstrapState : IState
   {
-    private GameStateMachine _gameStateMachine;
+    private readonly GameStateMachine _gameStateMachine;
     private readonly ISceneLoader _sceneLoader;
 
     public BootstrapState(GameStateMachine gameStateMachine, ISceneLoader sceneLoader)
@@ -27,9 +26,6 @@ namespace Codebase.Infrastructure.States
       _gameStateMachine.Enter<InitSimulationState>();
     }
 
-    public void Exit()
-    {
-      
-    }
+    public void Exit() { }
   }
 }

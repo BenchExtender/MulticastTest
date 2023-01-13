@@ -1,9 +1,9 @@
-using Codebase.Attack.DamageEffect;
 using Codebase.Attack.Effect;
 using Codebase.Enemy;
 using Codebase.Hero;
 using Scellecs.Morpeh;
 using Unity.IL2CPP.CompilerServices;
+using UnityEngine;
 
 namespace Codebase.Attack
 {
@@ -46,8 +46,6 @@ namespace Codebase.Attack
       ref var deadState = ref entity.AddComponent<DeadState>();
       deadState.Killer = target.Attacker;
     }
-
-
 
     private void ApplyDamaged(Entity entity, AttackTarget target)
     {

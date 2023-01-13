@@ -30,7 +30,7 @@ namespace Codebase.Attack.Effect
         
         private void PlayEffect(Entity entity)
         {
-            var damageEffect = entity.GetComponent<Effect.DamageEffect>(out bool hasEffect);
+            var damageEffect = entity.GetComponent<DamageEffect>(out bool hasEffect);
             if (hasEffect)
             {
                 damageEffect.Player.Play();
