@@ -1,4 +1,5 @@
 using Codebase.Attack;
+using Codebase.Attack.Effect;
 using Codebase.Enemy;
 using Codebase.Hero;
 using Codebase.Movement;
@@ -15,6 +16,10 @@ namespace Codebase.Installers
       Container.Bind<EnemySpawnSystem>().AsSingle();
       Container.Bind<EnemyDisposeSystem>().AsSingle();
       Container.Bind<AttackTargetSystem>().AsSingle();
+
+      Container.Bind<DamageEffectSystem>().AsSingle();
+      Container.Bind<KillCountSystem>().AsSingle();
+      
       Container.Bind<DamageSystem>().AsSingle();
     }
   }

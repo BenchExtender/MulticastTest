@@ -1,14 +1,15 @@
 using Scellecs.Morpeh;
 using Unity.IL2CPP.CompilerServices;
 
-namespace Codebase.Attack.DamageEffect
+namespace Codebase.Attack
 {
   [System.Serializable]
   [Il2CppSetOption(Option.NullChecks, false)]
   [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
   [Il2CppSetOption(Option.DivideByZeroChecks, false)]
-  public struct DamageEffectComponent : IComponent
+  public struct DamagedState : IComponent
   {
-    public global::Codebase.Attack.DamageEffect.DamageEffect Effect;
+    public Entity Dealer;
+    public int Damage;
   }
 }

@@ -1,3 +1,4 @@
+using Codebase.Attack.Effect;
 using Scellecs.Morpeh.Providers;
 using Unity.IL2CPP.CompilerServices;
 
@@ -6,5 +7,5 @@ namespace Codebase.Attack.DamageEffect
   [Il2CppSetOption(Option.NullChecks, false)]
   [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
   [Il2CppSetOption(Option.DivideByZeroChecks, false)]
-  public sealed class DamageEffectProvider : MonoProvider<DamageEffectComponent> { }
+  public sealed class DamageEffectProvider : MonoProvider<Effect.DamageEffect> { }
 }

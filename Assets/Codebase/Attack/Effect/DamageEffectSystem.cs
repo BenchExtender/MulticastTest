@@ -1,33 +1,39 @@
-using Codebase.Attack;
-using Codebase.Movement;
 using Scellecs.Morpeh;
 using Scellecs.Morpeh.Systems;
 using Unity.IL2CPP.CompilerServices;
 using UnityEngine;
 
-namespace Codebase.Enemy
+namespace Codebase.Attack.Effect
 {
     [Il2CppSetOption(Option.NullChecks, false)]
     [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
     [Il2CppSetOption(Option.DivideByZeroChecks, false)]
-    public class EnemyDisposeSystem : ISystem 
+    public sealed class DamageEffectSystem : ISystem 
     {
         public World World { get; set; }
-
         private Filter _filter;
+
         public void OnAwake()
         {
-            _filter = World.Filter
-                .With<EnemyComponent>()
-                .With<DeadState>();
+            _filter = World.Filter.With<DamagedState>();
         }
 
         public void OnUpdate(float deltaTime)
         {
             foreach (var entity in _filter)
             {
-                entity.RemoveComponent<DeadState>();
-                entity.Dispose();
+                PlayEffect(entity);
+                entity.RemoveComponent<DamagedState>();
+            }
+        }
+        
+        
+        private void PlayEffect(Entity entity)
+        {
+            var damageEffect = entity.GetComponent<Effect.DamageEffect>(out bool hasEffect);
+            if (hasEffect)
+            {
+                damageEffect.Player.Play();
             }
         }
 

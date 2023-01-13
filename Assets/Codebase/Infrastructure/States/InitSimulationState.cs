@@ -1,4 +1,5 @@
 using Codebase.Attack;
+using Codebase.Attack.Effect;
 using Codebase.Configs;
 using Codebase.Enemy;
 using Codebase.Hero;
@@ -56,9 +57,13 @@ namespace Codebase.Infrastructure.States
             _systemGroup.AddSystem(_systemFactory.Create<HeroMovementSystem>());
             _systemGroup.AddSystem(_systemFactory.Create<MovementSystem>());
             _systemGroup.AddSystem(_systemFactory.Create<EnemySpawnSystem>());
-            _systemGroup.AddSystem(_systemFactory.Create<EnemyDisposeSystem>());
             _systemGroup.AddSystem(_systemFactory.Create<AttackTargetSystem>());
             _systemGroup.AddSystem(_systemFactory.Create<DamageSystem>());
+
+            _systemGroup.AddSystem(_systemFactory.Create<DamageEffectSystem>());
+            _systemGroup.AddSystem(_systemFactory.Create<KillCountSystem>());
+
+            _systemGroup.AddSystem(_systemFactory.Create<EnemyDisposeSystem>());
             _world.AddSystemsGroup(0, _systemGroup);
         }
 
@@ -75,9 +80,6 @@ namespace Codebase.Infrastructure.States
             hud.Init(heroModel);
         }
 
-        public void Exit()
-        {
-    
-        }
+        public void Exit() { }
     }
 }

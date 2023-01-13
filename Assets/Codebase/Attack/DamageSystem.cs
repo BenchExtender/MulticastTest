@@ -1,4 +1,5 @@
 using Codebase.Attack.DamageEffect;
+using Codebase.Attack.Effect;
 using Codebase.Enemy;
 using Codebase.Hero;
 using Scellecs.Morpeh;
@@ -29,34 +30,30 @@ namespace Codebase.Attack
       {
         var target = entity.GetComponent<AttackTarget>();
         ref var health = ref entity.GetComponent<Health>();
-
         health.DealDamage(target.Damage);
-        CheckDeath(health, entity, target);
-        PlayEffect(entity);
+
+        if (health.Current <= 0)
+          ApplyDeadState(entity, target);
+        else
+          ApplyDamaged(entity, target);
+        
         entity.RemoveComponent<AttackTarget>();
       }
     }
 
-    private void CheckDeath(Health health, Entity entity, AttackTarget target)
+    private void ApplyDeadState(Entity entity, AttackTarget target)
     {
-      if (health.Current <= 0)
-      {
-        entity.AddComponent<DeadState>();
-        ref var hero = ref target.Attacker.GetComponent<HeroComponent>(out bool isHero);
-        if (isHero)
-        {
-          hero.Model.KillCount.Value++;
-        }
-      }
+      ref var deadState = ref entity.AddComponent<DeadState>();
+      deadState.Killer = target.Attacker;
     }
 
-    private void PlayEffect(Entity entity)
+
+
+    private void ApplyDamaged(Entity entity, AttackTarget target)
     {
-      var damageEffect = entity.GetComponent<DamageEffectComponent>(out bool hasEffect);
-      if (hasEffect)
-      {
-        damageEffect.Effect.Play();
-      }
+      ref var damaged = ref entity.AddComponent<DamagedState>();
+      damaged.Damage = target.Damage;
+      damaged.Dealer = target.Attacker;
     }
 
     public void Dispose() { }

@@ -201,7 +201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   serializedData:
-    Effect: {fileID: 6508637880298176698}
+    Player: {fileID: 6508637880298176698}
 --- !u!114 &6508637880298176698
 MonoBehaviour:
   m_ObjectHideFlags: 0
