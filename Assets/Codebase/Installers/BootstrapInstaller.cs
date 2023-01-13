@@ -5,7 +5,6 @@ using Codebase.Services.HeroUpgradeService;
 using Codebase.Services.InputService;
 using Codebase.Services.RandomService;
 using Codebase.Services.SystemFactory;
-using Codebase.Services.WorldProvider;
 using Codebase.Services.WorldUpdater;
 using Codebase.UI;
 using UnityEngine;
@@ -35,7 +34,6 @@ namespace Codebase.Installers
         private void BindServices()
         {
             Container.BindInterfacesAndSelfTo<InputService>().AsSingle();
-            Container.BindInterfacesAndSelfTo<WorldProvider>().AsSingle();
             Container.BindInterfacesAndSelfTo<WorldUpdater>().AsSingle();
             Container.BindInterfacesAndSelfTo<HeroUpgradeService>().AsSingle();
             Container.BindInterfacesAndSelfTo<RandomService>().AsSingle();

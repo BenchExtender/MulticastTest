@@ -5,7 +5,6 @@ using Codebase.Hero;
 using Codebase.Hero.Factory;
 using Codebase.Movement;
 using Codebase.Services.SystemFactory;
-using Codebase.Services.WorldProvider;
 using Codebase.Services.WorldUpdater;
 using Codebase.UI;
 using Scellecs.Morpeh;
@@ -15,7 +14,6 @@ namespace Codebase.Infrastructure.States
 {
     public class InitSimulationState : IState
     {
-        private readonly IWorldProvider _worldProvider;
         private readonly IWorldUpdater _worldUpdater;
         private readonly ISystemFactory _systemFactory;
         private readonly IHeroFactory _heroFactory;
@@ -25,10 +23,9 @@ namespace Codebase.Infrastructure.States
         private SystemsGroup _systemGroup;
         private World _world;
 
-        public InitSimulationState(IWorldProvider worldProvider, IWorldUpdater worldUpdater, ISystemFactory systemFactory, 
+        public InitSimulationState(IWorldUpdater worldUpdater, ISystemFactory systemFactory, 
             IHeroFactory heroFactory, GameStateMachine gameStateMachine, IHudFactory hudFactory)
         {
-            _worldProvider = worldProvider;
             _worldUpdater = worldUpdater;
             _systemFactory = systemFactory;
             _heroFactory = heroFactory;
@@ -53,6 +50,9 @@ namespace Codebase.Infrastructure.States
         private void CreateSystems()
         {
             _systemGroup = _world.CreateSystemsGroup();
+
+            _systemGroup.AddInitializer(new TransformableDisposeInitializer());
+            
             _systemGroup.AddSystem(_systemFactory.Create<HeroMovementSystem>());
             _systemGroup.AddSystem(_systemFactory.Create<MovementSystem>());
             _systemGroup.AddSystem(_systemFactory.Create<EnemySpawnSystem>());
@@ -65,7 +65,6 @@ namespace Codebase.Infrastructure.States
         private void InitializeWorld()
         {
             _world = World.Default;
-            _worldProvider.World = _world;
             _worldUpdater.Setup(_world);
         }
 

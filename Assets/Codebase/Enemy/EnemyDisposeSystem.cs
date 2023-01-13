@@ -15,7 +15,6 @@ namespace Codebase.Enemy
         public World World { get; set; }
 
         private Filter _filter;
-
         public void OnAwake()
         {
             _filter = World.Filter
@@ -27,8 +26,7 @@ namespace Codebase.Enemy
         {
             foreach (var entity in _filter)
             {
-                var transform = entity.GetComponent<Transformable>().Transform;
-                Object.Destroy(transform.gameObject);
+                entity.RemoveComponent<DeadState>();
                 entity.Dispose();
             }
         }

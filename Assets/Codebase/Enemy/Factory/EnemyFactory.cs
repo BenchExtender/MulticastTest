@@ -6,7 +6,7 @@ namespace Codebase.Enemy.Factory
 {
   public class EnemyFactory : IEnemyFactory
   {
-    public Entity Create(EnemyConfig config)
+    public Entity Create(EnemyConfig config, Vector3 position)
     {
       var enemyObject = Object.Instantiate(config.Prefab);
       var enemyEntity = enemyObject.GetComponent<EnemyComponentProvider>().Entity;
@@ -15,6 +15,8 @@ namespace Codebase.Enemy.Factory
       health.Max = config.MaxHealth;
       health.Reset();
 
+      enemyObject.transform.position = position;
+      
       return enemyEntity;
     }
   }

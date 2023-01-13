@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c176a4522255274295b58023e5e12ef, type: 3}
   m_Name: GameConfig
   m_EditorClassIdentifier: 
-  <MaxEnemiesCount>k__BackingField: 10
-  <MaxSpawnDistance>k__BackingField: 18
+  <MaxEnemiesCount>k__BackingField: 20
+  <MaxSpawnDistance>k__BackingField: 7
   <MinSpawnDistance>k__BackingField: 3
   <HudPrefab>k__BackingField: {fileID: 8872588453675129515, guid: 88dcebacd46b4b54b9d8a6c5be85769a, type: 3}

@@ -6,6 +6,6 @@ namespace Codebase.Enemy.Factory
 {
   public interface IEnemyFactory
   {
-    Entity Create(EnemyConfig config);
+    Entity Create(EnemyConfig config, Vector3 position);
   }
 }

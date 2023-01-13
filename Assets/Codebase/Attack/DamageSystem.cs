@@ -1,8 +1,8 @@
+using Codebase.Attack.DamageEffect;
 using Codebase.Enemy;
 using Codebase.Hero;
 using Scellecs.Morpeh;
 using Unity.IL2CPP.CompilerServices;
-using UnityEngine;
 
 namespace Codebase.Attack
 {
@@ -32,11 +32,12 @@ namespace Codebase.Attack
 
         health.DealDamage(target.Damage);
         CheckDeath(health, entity, target);
+        PlayEffect(entity);
         entity.RemoveComponent<AttackTarget>();
       }
     }
 
-    private static void CheckDeath(Health health, Entity entity, AttackTarget target)
+    private void CheckDeath(Health health, Entity entity, AttackTarget target)
     {
       if (health.Current <= 0)
       {
@@ -46,6 +47,15 @@ namespace Codebase.Attack
         {
           hero.Model.KillCount.Value++;
         }
+      }
+    }
+
+    private void PlayEffect(Entity entity)
+    {
+      var damageEffect = entity.GetComponent<DamageEffectComponent>(out bool hasEffect);
+      if (hasEffect)
+      {
+        damageEffect.Effect.Play();
       }
     }
 

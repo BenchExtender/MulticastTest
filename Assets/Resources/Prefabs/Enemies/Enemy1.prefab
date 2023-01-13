@@ -97,6 +97,8 @@ GameObject:
   - component: {fileID: 7486561979115565799}
   - component: {fileID: -5247650578440656924}
   - component: {fileID: -4347704185302115456}
+  - component: {fileID: -1451041052509355336}
+  - component: {fileID: -644592265856756740}
   m_Layer: 6
   m_Name: Enemy1
   m_TagString: Untagged
@@ -186,3 +188,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 467bbc4e439348b4982ddbbb5774244e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-1451041052509355336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1462565658633212696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e36f2c66c82ca6a408225762841154d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializedData:
+    Effect: {fileID: -644592265856756740}
+--- !u!114 &-644592265856756740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1462565658633212696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cc4ee89931c6c845aa30e5b6b7d9466, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Renderer>k__BackingField: {fileID: 1462565658582827446}
+  <DamagedColor>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
+  <Duration>k__BackingField: 0.25

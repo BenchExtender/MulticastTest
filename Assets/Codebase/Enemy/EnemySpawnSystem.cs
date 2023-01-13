@@ -13,18 +13,19 @@ namespace Codebase.Enemy
   [Il2CppSetOption(Option.DivideByZeroChecks, false)]
   public class EnemySpawnSystem : ISystem 
   {
+
     public World World { get; set; }
 
     private readonly GameConfig _config;
-    private readonly EnemiesCollectionConfig _enemiesCollection;
     private readonly IEnemyFactory _enemyFactory;
+    private readonly EnemiesCollectionConfig _enemiesCollection;
     private Filter _filter;
 
-    public EnemySpawnSystem(GameConfig config, EnemiesCollectionConfig enemiesCollection, IEnemyFactory enemyFactory)
+    public EnemySpawnSystem(GameConfig config, IEnemyFactory enemyFactory, EnemiesCollectionConfig enemiesCollection)
     {
       _config = config;
-      _enemiesCollection = enemiesCollection;
       _enemyFactory = enemyFactory;
+      _enemiesCollection = enemiesCollection;
     }
 
     public void OnAwake()
@@ -42,9 +43,7 @@ namespace Codebase.Enemy
 
     private void SpawnEnemy()
     {
-      EnemyConfig enemyConfig = SelectEnemyToSpawn();
-      var enemyEntity = _enemyFactory.Create(enemyConfig);
-      enemyEntity.GetComponent<Transformable>().Transform.position = GetRandomPosition();
+      _enemyFactory.Create(_enemiesCollection.GetRandom(), GetRandomPosition());
     }
 
     private Vector3 GetRandomPosition()
@@ -54,14 +53,6 @@ namespace Codebase.Enemy
       return randomDirection * Random.Range(_config.MinSpawnDistance, _config.MaxSpawnDistance);
     }
 
-    private EnemyConfig SelectEnemyToSpawn()
-    {
-      return _enemiesCollection.GetRandom();
-    }
-
-    public void Dispose()
-    {
-    
-    }
+    public void Dispose() { }
   }
 }

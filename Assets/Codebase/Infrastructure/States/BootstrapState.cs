@@ -1,6 +1,5 @@
 using Codebase.Hero.Factory;
 using Codebase.Services.SystemFactory;
-using Codebase.Services.WorldProvider;
 using Codebase.Services.WorldUpdater;
 using Scellecs.Morpeh;
 
